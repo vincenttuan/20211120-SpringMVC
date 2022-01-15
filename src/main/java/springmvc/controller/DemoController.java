@@ -1,12 +1,22 @@
 package springmvc.controller;
 
+import java.util.IntSummaryStatistics;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import springmvc.entity.User;
 
 // 母路徑 : http://localhost:8080/springmvc/mvc
 @Controller
@@ -105,7 +115,45 @@ public class DemoController {
 		return "0";
 	}
 	
+	// PathVariable 萬用字元: *(任意多字), ?(任意一字)
+	// 路徑：/demo/any/abcdefg/java8
+	// 路徑：/demo/any/car/java7
+	// 統一印出: Java
+	@RequestMapping("/any/*/java?")
+	@ResponseBody
+	public String any() {
+		return "Java";
+	}
 	
+	// RequestParam 任意多組同名參數
+	// 路徑： /demo/age?age=18&age=21&age=35
+	// 結果: 印出平均,最大與最小
+	@RequestMapping("/age")
+	@ResponseBody
+	public String age(@RequestParam("age") List<Integer> ageList) {
+		IntSummaryStatistics stat = ageList.stream().mapToInt(Integer::intValue).summaryStatistics();
+		return String.format("avg: %.1f, max: %d, min: %d", stat.getAverage(), stat.getMax(), stat.getMin());
+	}
 	
+	// Map 參數 key=value 型式
+	// 路徑： /demo/score?chinese=100&english=80&math=70
+	// 結果: sum: 250
+	@RequestMapping("/score")
+	@ResponseBody
+	public String score(@RequestParam Map<String, String> scores) {
+		int sum = scores.entrySet().stream().map(Entry::getValue).mapToInt(Integer::parseInt).sum();
+		return String.format("sum: %d", sum);
+	}
+	
+	// Java pojo(Plan Old Java Object) 物件
+	// 路徑： /demo/user?name=Vincent&age=18
+	@RequestMapping("/user")
+	@ResponseBody
+	public String addUser(@Valid User user, BindingResult result) {
+		if(result.hasErrors()) {
+			return String.format("Add User Fail: %s", result);
+		}
+		return String.format("Add OK: %s", user);
+	}
 	
 }

@@ -13,7 +13,17 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
+	<!--
 	<bean name="/test" class="springmvc.controller.TestController" />
+	-->
 	
-
+	<context:component-scan base-package="springmvc.controller"/>
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          id="internalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+	
+	
 </beans>

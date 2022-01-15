@@ -7,6 +7,8 @@
 <title>HomePage</title>
 </head>
 <body>
-	哈囉! SpringMVC
+	<ol>
+		<li><a href="/springmvc/mvc/user/input">User Form</a></li>
+	</ol>
 </body>
 </html>

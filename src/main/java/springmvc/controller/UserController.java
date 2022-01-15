@@ -1,11 +1,13 @@
 package springmvc.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,9 +43,12 @@ public class UserController {
 	}
 	
 	@RequestMapping("/read")
-	@ResponseBody
-	public String read() {
-		return userService.read().toString();
+	public String read(Model model) {
+		List<User> users = userService.read();
+		System.out.println("/read -> " + users);
+		// 將資料傳給 jsp 去渲染
+		model.addAttribute("users", users);
+		return "user/user_list";
 	}
 	
 	@RequestMapping("/get/{name}")

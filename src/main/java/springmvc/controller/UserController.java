@@ -35,6 +35,7 @@ public class UserController {
 	@RequestMapping("/input")
 	public String input(Model model) {
 		model.addAttribute("action", "add");
+		model.addAttribute("readonly", "");
 		return "user/user_form";
 	}
 	
@@ -65,6 +66,7 @@ public class UserController {
 			model.addAttribute("user", optUser.get());
 		}
 		model.addAttribute("action", "update/" + name);
+		model.addAttribute("readonly", "readonly");
 		return "user/user_form";
 	}
 	

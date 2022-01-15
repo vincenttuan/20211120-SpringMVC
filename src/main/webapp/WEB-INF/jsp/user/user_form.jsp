@@ -13,7 +13,7 @@
 	<form method="post" action="/springmvc/mvc/user/${ action }">
 		<fieldset>
 			<legend>User Form</legend>
-			User name: <input type="text" id="name" name="name" value="${ user.name }" placeholder="Please input name" />
+			User name: <input type="text" id="name" name="name" value="${ user.name }" ${ readonly } placeholder="Please input name" />
 			<p />
 			User age: <input type="number" id="age" name="age" value="${ user.age }" placeholder="Please input age" />
 			<p />

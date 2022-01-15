@@ -33,7 +33,8 @@ public class UserController {
 	private UserService userService;
 	
 	@RequestMapping("/input")
-	public String input() {
+	public String input(Model model) {
+		model.addAttribute("action", "/add");
 		return "user/user_form";
 	}
 	
@@ -57,22 +58,28 @@ public class UserController {
 	}
 	
 	@RequestMapping("/get/{name}")
-	@ResponseBody
-	public String get(@PathVariable("name") String name) {
-		Optional<User> optUser = userService.getByName(name); 
-		return optUser.isPresent()?optUser.get().toString():"Not Found";
+	public String get(@PathVariable("name") String name, Model model) {
+		Optional<User> optUser = userService.getByName(name);
+		System.out.println("/get -> " + name + " " + optUser.isPresent());
+		if(optUser.isPresent()) {
+			model.addAttribute("user", optUser.get());
+		}
+		model.addAttribute("action", "/update/" + name);
+		return "user/user_form";
 	}
 	
 	@RequestMapping("/update/{name}")
-	@ResponseBody
 	public String update(@PathVariable("name") String name, @RequestParam("age") Integer newAge) {
-		return userService.updateAgeByName(name, newAge) + "";
+		boolean isSuccess = userService.updateAgeByName(name, newAge);
+		System.out.println("/update --> " + name + " " + newAge + " " + isSuccess);
+		return "redirect:../read";
 	}
 	
 	@RequestMapping("/delete/{name}")
-	@ResponseBody
 	public String delete(@PathVariable("name") String name) {
-		return userService.deleteByName(name) + "";
+		boolean isSuccess = userService.deleteByName(name);
+		System.out.println("/delete -> " + name + " " + isSuccess);
+		return "redirect:../read";
 	}
 	
 	

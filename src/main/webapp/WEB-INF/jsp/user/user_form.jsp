@@ -10,16 +10,16 @@
 <title>User Form</title>
 </head>
 <body>
-	<form method="post" action="./add">
+	<form method="post" action="/springmvc/mvc/user/${ action }">
 		<fieldset>
 			<legend>User Form</legend>
-			User name: <input type="text" id="name" name="name" placeholder="Please input name" />
+			User name: <input type="text" id="name" name="name" value="${ user.name }" placeholder="Please input name" />
 			<p />
-			User age: <input type="number" id="age" name="age" placeholder="Please input age" />
+			User age: <input type="number" id="age" name="age" value="${ user.age }" placeholder="Please input age" />
 			<p />
-			<input type="submit" value="add" />
+			<input type="submit" value="${ action }" />
 			<input type="reset" value="reset" />
-			<input type="button" value="read" onclick="window.location.href='./read';" />
+			<input type="button" value="read" onclick="window.location.href='/springmvc/mvc/user/read';" />
 		</fieldset>
 	</form>
 </body>

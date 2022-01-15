@@ -15,6 +15,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import springmvc.entity.User;
 import springmvc.service.UserService;
 
+/*
+ * API Spec:
+ * http://localhost:8080/springmvc/mvc/user/read
+ * http://localhost:8080/springmvc/mvc/user/add?name=mary&age=19
+ * http://localhost:8080/springmvc/mvc/user/get/mary
+ * http://localhost:8080/springmvc/mvc/user/update/mary?age=20
+ * http://localhost:8080/springmvc/mvc/user/delete/mary
+*/
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -41,7 +50,7 @@ public class UserController {
 	@ResponseBody
 	public String get(@PathVariable("name") String name) {
 		Optional<User> optUser = userService.getByName(name); 
-		return optUser.isPresent()?optUser.get().toString():"";
+		return optUser.isPresent()?optUser.get().toString():"Not Found";
 	}
 	
 	@RequestMapping("/update/{name}")

@@ -25,7 +25,7 @@ public class UserService {
 	}
 	
 	public Optional<User> getByName(String name) {
-		Optional<User> optUser = users.stream().filter(u -> u.equals(name)).findFirst();
+		Optional<User> optUser = users.stream().filter(u -> u.getName().equals(name)).findFirst();
 		return optUser;
 	}
 	

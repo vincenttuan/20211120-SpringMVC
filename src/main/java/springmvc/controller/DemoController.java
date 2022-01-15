@@ -46,5 +46,15 @@ public class DemoController {
 	// Lab:
 	// 子路徑: /demo/bmi?h=170&w=60
 	// 輸出結果: bmi: 20.76
-	
+	// 若沒有輸入參數則顯示: bmi: unknow
+	@RequestMapping("/bmi")
+	@ResponseBody
+	public String bmi(@RequestParam(value = "h", defaultValue = "0") Double h,
+					  @RequestParam(value = "w", defaultValue = "0") Double w) {
+		if(h <=0 || w <= 0) {
+			return "bmi: unknow";
+		}
+		double bmi = w / Math.pow(h/100, 2);
+		return String.format("bmi: %.2f", bmi);
+	}
 }

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<ol>
-		<li><a href="/springmvc/mvc/user/input">User Form</a></li>
+		<li><a href="${pageContext.request.contextPath}/mvc/user/input">User Form</a></li>
 	</ol>
 </body>
 </html>

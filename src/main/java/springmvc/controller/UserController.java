@@ -32,14 +32,19 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@RequestMapping("/input")
+	public String input() {
+		return "user/user_form";
+	}
+	
 	@RequestMapping("/add")
-	@ResponseBody
 	public String add(@Valid User user, BindingResult result) {
 		if(result.hasErrors()) {
 			return String.format("Add User Fail: %s", result);
 		}
 		userService.create(user);
-		return userService.read().toString();
+		System.out.println("/add -> " + user);
+		return "redirect:./read";
 	}
 	
 	@RequestMapping("/read")

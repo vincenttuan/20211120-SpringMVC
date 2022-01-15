@@ -12,13 +12,19 @@
 <body>
 	<table border="1" cellspacing="0" cellpadding="10" width="50%">
 		<thead>
-			<tr><th>Name</th><th>Age</th></tr>
+			<tr><th>Name</th><th>Age</th><th>Delete</th></tr>
 		</thead>
 		<tbody>
 			<c:forEach var="user" items="${ users }">
-				<tr><td>${ user.name }</td><td>${ user.age }</td></tr>
+				<tr>
+					<td>${ user.name }</td>
+					<td>${ user.age }</td>
+					<td><input type="button" value="Delete" onclick="window.location.href='./delete/${ user.name }';" /></td>
+				</tr>
 			</c:forEach>
 		</tbody>
-	</table> 
+	</table>
+	<p />
+	<input type="button" value="back" onclick="window.location.href='./input'" /> 
 </body>
 </html>

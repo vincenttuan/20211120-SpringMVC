@@ -34,7 +34,7 @@ public class UserController {
 	
 	@RequestMapping("/input")
 	public String input(Model model) {
-		model.addAttribute("action", "/add");
+		model.addAttribute("action", "add");
 		return "user/user_form";
 	}
 	
@@ -64,7 +64,7 @@ public class UserController {
 		if(optUser.isPresent()) {
 			model.addAttribute("user", optUser.get());
 		}
-		model.addAttribute("action", "/update/" + name);
+		model.addAttribute("action", "update/" + name);
 		return "user/user_form";
 	}
 	

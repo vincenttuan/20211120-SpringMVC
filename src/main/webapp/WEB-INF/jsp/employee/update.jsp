@@ -10,13 +10,17 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
-<title>Employee Form</title>
+<title>Employee Update Form</title>
 
 </head>
 <body style="padding: 20px">
-	<spform:form modelAttribute="employee" class="pure-form" method="post" action="${pageContext.request.contextPath}/mvc/employee/">
+	<spform:form modelAttribute="employee" 
+				class="pure-form" 
+				method="post" 
+				action="${pageContext.request.contextPath}/mvc/employee/${ index }">
 		<fieldset>
-			<legend>Employee Form</legend>
+			<legend>Employee Update Form</legend>
+			<input type="hidden" name="_method" value="PUT" />
 			姓名: <spform:input path="name" /><p />
 			年齡: <spform:input path="age" /><p />
 			薪資: <spform:input path="salary" /><p />
@@ -36,56 +40,10 @@
 				 <spform:checkbox path="interest" value="飛控" />飛控
 				 <p />
 			履歷: <spform:textarea path="resume" /><p />
-			<input type="submit" value="新增" class="pure-button pure-button-primary" />
+			<input type="submit" value="修改" class="pure-button pure-button-primary" />
 		</fieldset>
 	</spform:form>
 	<p />
-	<p />
-	<table class="pure-table pure-table-bordered">
-		<thead>
-			<tr>
-				<th>index</th>
-				<th>姓名</th>
-				<th>年齡</th>
-				<th>薪資</th>
-				<th>生日</th>
-				<th>學歷</th>
-				<th>性別</th>
-				<th>興趣</th>
-				<th>履歷</th>
-				<th>編輯</th>
-				<th>刪除</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach varStatus="status" var="employee" items="${ employees }">
-			<tr>
-				<td>${ status.index }</td>
-				<td>${ employee.name }</td>
-				<td>${ employee.age }</td>
-				<td>${ employee.salary }</td>
-				<td><fmt:formatDate pattern="yyyy/MM/dd" value="${ employee.birth }" /></td>
-				<td>${ employee.education }</td>
-				<td>${ employee.sex }</td>
-				<td>
-					<c:forEach var="i" items="${ employee.interest }">
-						${ i } 
-					</c:forEach>
-				</td>
-				<td>${ employee.resume }</td>
-				<td>
-					<input type="button"
-							onclick="window.location.href='${pageContext.request.contextPath}/mvc/employee/${ status.index }';" 
-							value="編輯" class="pure-button pure-button-primary" />
-				 </td>
-				<td>
-					<input type="button"
-							onclick="deleteEmployee(${ status.index }, 'DELETE')" 
-							value="刪除" class="pure-button pure-button-primary" />
-				</td>
-			</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+	${ employees }
 </body>
 </html>

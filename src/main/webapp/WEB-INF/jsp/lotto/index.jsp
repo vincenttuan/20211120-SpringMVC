@@ -9,6 +9,18 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
 <title>Lotto Form</title>
+<script>
+	function updateOrDelete(index, httpmethod) {
+	  var xhttp = new XMLHttpRequest();
+	  // callback 回調函式
+	  xhttp.onreadystatechange = function() {
+	  	window.location.href = "${pageContext.request.contextPath}/mvc/lotto/";
+	  };
+	  xhttp.open(httpmethod, "${pageContext.request.contextPath}/mvc/lotto/" + index, true);
+	  xhttp.send();
+	  return false;
+	} 
+</script>
 </head>
 <body style="padding: 20px">
 	<form class="pure-form" method="post" action="${pageContext.request.contextPath}/mvc/lotto/add">
@@ -33,7 +45,8 @@
 				<c:forEach var="num" items="${ lotto }">
 					<td>${ num }</td>
 				</c:forEach>
-				<td>換號</td><td>刪除</td>
+				<td><a href="javascript:updateOrDelete(${ status.index }, 'PUT')">換號</a></td>
+				<td><a href="javascript:updateOrDelete(${ status.index }, 'DELETE')">刪除</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>

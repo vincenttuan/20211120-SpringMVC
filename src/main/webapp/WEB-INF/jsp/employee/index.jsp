@@ -39,5 +39,7 @@
 			<input type="submit" value="新增" class="pure-button pure-button-primary" />
 		</fieldset>
 	</spform:form>
+	<p />
+	${ employees }
 </body>
 </html>

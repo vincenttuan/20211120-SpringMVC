@@ -30,6 +30,12 @@
 			<input type="submit" value="電腦選號" class="pure-button pure-button-primary" />
 		</fieldset>
 	</form>
+	<form class="pure-form">
+		<fieldset>
+			<legend>Lotto Statistics</legend>
+			${ stat }
+		</fieldset>
+	</form>
 	<p />
 	<table class="pure-table pure-table-bordered">
 		<thead>

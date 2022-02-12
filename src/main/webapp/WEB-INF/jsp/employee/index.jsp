@@ -80,7 +80,7 @@
 				 </td>
 				<td>
 					<input type="button"
-							onclick="deleteEmployee(${ status.index }, 'DELETE')" 
+							onclick="deleteEmployee(${ status.index })" 
 							value="刪除" class="pure-button pure-button-primary" />
 				</td>
 			</tr>

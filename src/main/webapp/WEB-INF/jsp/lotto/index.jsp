@@ -17,8 +17,9 @@
 	  	window.location.href = "${pageContext.request.contextPath}/mvc/lotto/";
 	  };
 	  xhttp.open(httpmethod, "${pageContext.request.contextPath}/mvc/lotto/" + index, true);
-	  xhttp.send();
-	  return false;
+	  xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	  xhttp.send(); // 會有 405 的錯誤, 但程式可以正常執行
+	  //return false;
 	} 
 </script>
 </head>
@@ -45,8 +46,16 @@
 				<c:forEach var="num" items="${ lotto }">
 					<td>${ num }</td>
 				</c:forEach>
-				<td><a href="javascript:updateOrDelete(${ status.index }, 'PUT')">換號</a></td>
-				<td><a href="javascript:updateOrDelete(${ status.index }, 'DELETE')">刪除</a></td>
+				<td>
+					<input type="button"
+							onclick="updateOrDelete(${ status.index }, 'PUT')" 
+							value="換號" class="pure-button pure-button-primary" />
+				 </td>
+				<td>
+					<input type="button"
+							onclick="updateOrDelete(${ status.index }, 'DELETE')" 
+							value="刪除" class="pure-button pure-button-primary" />
+				</td>
 			</tr>
 			</c:forEach>
 		</tbody>

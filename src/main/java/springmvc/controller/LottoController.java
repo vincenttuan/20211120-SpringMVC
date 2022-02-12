@@ -24,7 +24,8 @@ public class LottoController {
 	//@RequestMapping(value = {"/", "/welcome"}, method = {RequestMethod.GET, RequestMethod.POST})
 	//@RequestMapping(value = "/", method = RequestMethod.GET)
 	@GetMapping("/")
-	public String index() {
+	public String index(Model model) {
+		model.addAttribute("lottos", lottos);
 		return "lotto/index";
 	}
 	

@@ -14,7 +14,9 @@
 	<form class="pure-form">
 		<fieldset>
 			<legend>Lotto Success</legend>
-			${ lotto }
+			${ param.lotto } <!-- attr.addAttribute("lotto", lotto); -->
+			
+			${ lotto } <!-- attr.addFlashAttribute("lotto", lotto); -->
 		</fieldset>
 	</form>
 </body>

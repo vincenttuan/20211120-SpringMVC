@@ -34,6 +34,7 @@ public class LottoController {
 		// 樂透 539 選號 (1~39 取5個不重複的數字)
 		Set<Integer> lotto = getLottoNumIntegers();
 		// 將 lotto 資料傳遞給 addOk.jsp 防止二次 submit
+		attr.addAttribute("lotto", lotto);
 		attr.addFlashAttribute("lotto", lotto);
 		return "redirect:addOk";
 	}

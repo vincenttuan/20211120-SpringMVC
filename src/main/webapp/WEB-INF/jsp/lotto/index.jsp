@@ -11,7 +11,7 @@
 <title>Lotto Form</title>
 </head>
 <body style="padding: 20px">
-	<form class="pure-form" method="post" action="${pageContext.request.contextPath}/mvc/lotto/">
+	<form class="pure-form" method="post" action="${pageContext.request.contextPath}/mvc/lotto/add">
 		<fieldset>
 			<legend>Lotto Form</legend>
 			<input type="submit" value="電腦選號" class="pure-button pure-button-primary" />

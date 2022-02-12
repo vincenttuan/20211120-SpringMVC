@@ -11,12 +11,14 @@
 <title>Lotto Success</title>
 </head>
 <body style="padding: 20px">
-	<form class="pure-form">
+	<form class="pure-form" method="get" action="${pageContext.request.contextPath}/mvc/lotto/">
 		<fieldset>
 			<legend>Lotto Success</legend>
 			${ param.lotto } <!-- attr.addAttribute("lotto", lotto); -->
 			
 			${ lotto } <!-- attr.addFlashAttribute("lotto", lotto); -->
+			<p />
+			<input type="submit" value="回首頁" class="pure-button pure-button-primary" />
 		</fieldset>
 	</form>
 </body>

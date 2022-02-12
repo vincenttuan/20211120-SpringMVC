@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import springmvc.entity.Employee;
@@ -71,6 +73,14 @@ public class EmployeeController {
 		employees.set(index, employee);
 		attr.addFlashAttribute("employee", employee);
 		return "redirect:./updateOk";
+	}
+	
+	@GetMapping(value = "/{index}/salary")
+	public String update(@PathVariable("index") int index, @RequestParam("salary") int salary) {
+		System.out.println("salary:" + salary);
+		Employee emp = employees.get(index);
+		emp.setSalary(salary);
+		return "redirect:../";
 	}
 	
 	@DeleteMapping(value = "/{index}") 

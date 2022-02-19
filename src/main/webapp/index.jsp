@@ -13,6 +13,8 @@
 		<li><a href="${pageContext.request.contextPath}/mvc/employee/">Employee Form</a></li>
 		<li><a href="${pageContext.request.contextPath}/mvc/person/">Person Form</a></li>
 		<li><a href="${pageContext.request.contextPath}/mvc/stock/">Stock Form</a></li>
+		<li><a href="${pageContext.request.contextPath}/mvc/lab/emp/">Lab: Employee & Job Form</a></li>
+		<li><a href="${pageContext.request.contextPath}/mvc/lab/job/">Lab: Employee & Job Form</a></li>
 	</ol>
 </body>
 </html>

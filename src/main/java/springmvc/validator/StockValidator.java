@@ -1,5 +1,6 @@
 package springmvc.validator;
 
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -7,6 +8,7 @@ import org.springframework.validation.Validator;
 import springmvc.entity.Stock;
 import yahoofinance.YahooFinance;
 
+@Component
 public class StockValidator implements Validator {
 
 	@Override

@@ -35,12 +35,12 @@
 		</tr>
 		<tr>
 			<!-- Employee List -->
-			<td valign="top" colspan="4"></td>
+			<td valign="top" colspan="4">
+				${ employees }			
+			</td>
 		</tr>
 	</table>
 	
-	
-	<hr />
 	
 </body>
 </html>

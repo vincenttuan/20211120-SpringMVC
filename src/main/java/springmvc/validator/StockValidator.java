@@ -36,22 +36,27 @@ public class StockValidator implements Validator {
 			double previousClose = yStock.getQuote().getPreviousClose().doubleValue();
 			// 買進價格必須是昨收的±10%之間
 			if(stock.getPrice() < previousClose * 0.9 || stock.getPrice() > previousClose * 1.1) {
-				errors.reject("price", "stock.price.range");
+				// rejectValue 支援 .properties
+				errors.rejectValue("price", "stock.price.range");
+				errors.reject("price", String.format("(%.1f ~ %.1f)", 
+												(previousClose * 0.9), 
+												(previousClose * 1.1))
+							 );
 			}
 			// 買進股數必須大於或等於1000
 			if(stock.getAmount() < 1000) {
-				errors.reject("amount", "stock.amount.notenough");
+				errors.rejectValue("amount", "stock.amount.notenough");
 			}
 			// 買進股數必須是1000的倍數(1000股 = 1張)
 			if(stock.getAmount() % 1000 != 0) {
-				errors.reject("amount", "stock.amount.range");
+				errors.rejectValue("amount", "stock.amount.range");
 			}
 			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			if(yStock == null) {
-				errors.reject("symbol", "stock.symbol.notfound");
+				errors.rejectValue("symbol", "stock.symbol.notfound");
 			}
 		}
 		

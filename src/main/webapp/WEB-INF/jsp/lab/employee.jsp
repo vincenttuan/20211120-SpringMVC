@@ -78,7 +78,8 @@
 	<table>
 		<tr>
 			<!-- Employee From -->
-			<td valign="top"><%@include file="employee_form.jspf"%>
+			<td valign="top">
+				<%@include file="employee_form.jspf"%>
 			</td>
 			<!-- Salary Column Chart -->
 			<td valign="top">
@@ -95,7 +96,9 @@
 		</tr>
 		<tr>
 			<!-- Employee List -->
-			<td valign="top" colspan="4">${ employees }</td>
+			<td valign="top" colspan="4">
+				<%@include file="employee_list.jspf"%>	
+			</td>
 		</tr>
 	</table>
 

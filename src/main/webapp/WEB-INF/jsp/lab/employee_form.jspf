@@ -7,7 +7,7 @@
 	uri="http://www.springframework.org/tags/form"%>
 	
 <spform:form modelAttribute="employee" class="pure-form" method="post"
-	action="${pageContext.request.contextPath}/mvc/lab/emp">
+	action="${pageContext.request.contextPath}/mvc/lab/emp/">
 	<fieldset>
 		<legend>Employee Form</legend>
 		<input type="hidden" name="_method" id="_method" value="${ _method }" />

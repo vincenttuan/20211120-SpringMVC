@@ -59,7 +59,7 @@
 				 action="${ pageContext.request.contextPath }/mvc/lab/job/">
 					<fieldset>
 						<legend>
-							<a href="${ pageContext.request.contextPath }/mvc/lab/employee/">Employee form</a> | Job form
+							<a href="${ pageContext.request.contextPath }/mvc/lab/emp/">Employee form</a> | Job form
 						</legend>
 						<input type="hidden" name="_method" id="_method" value="${ _method }"/>
 						編號：<spform:input path="jid" readonly="true" /><p />
@@ -115,7 +115,7 @@
 										</td>
 										<td>${ job.employee.eid }</td>
 										<td>
-											<a href="${ pageContext.request.contextPath }/mvc/lab/employee/${ job.employee.eid }" title="按我一下可以修改員工資料">
+											<a href="${ pageContext.request.contextPath }/mvc/lab/emp/${ job.employee.eid }" title="按我一下可以修改員工資料">
 												${ job.employee.ename }
 											</a>
 										</td>

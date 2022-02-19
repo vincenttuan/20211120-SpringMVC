@@ -12,18 +12,24 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Person {
-	@Size(min = 2, max = 50, message = "姓名字數範圍必須介於 2~50 字之間")
+	//@Size(min = 2, max = 50, message = "姓名字數範圍必須介於 2~50 字之間")
+	@Size(min = 2, max = 50, message = "{person.name.size}")
 	private String name; // 姓名
 	
-	@NotNull(message = "年齡不可以是空值")
-	@Range(min = 0, max = 150, message = "年齡範圍必須介於 0~150 歲之間")
+	//@NotNull(message = "年齡不可以是空值")
+	//@Range(min = 0, max = 150, message = "年齡範圍必須介於 0~150 歲之間")
+	@NotNull(message = "{person.age.empty}")
+	@Range(min = 0, max = 150, message = "{person.age.range}")
 	private Integer age; // 年齡
 	
-	@NotNull(message = "會員設定不可以是空值")
+	//@NotNull(message = "會員設定不可以是空值")
+	@NotNull(message = "{person.member.empty}")
 	private Boolean member; // 是否為會員
 	
-	@NotNull(message = "生日不可以是空值")
-	@Past(message = "生日不可大於今日")
+	//@NotNull(message = "生日不可以是空值")
+	//@Past(message = "生日不可大於今日")
+	@NotNull(message = "{person.birth.empty}")
+	@Past(message = "{person.birth.past}")
 	@JsonFormat(pattern = "yyyy-MM-dd") // 返回日期型態 (傳給 view 表單的資料)
 	@DateTimeFormat(pattern = "yyyy-MM-dd") // 接收日期型態 (接收 view 表單的資料)
 	private Date birth; // 生日

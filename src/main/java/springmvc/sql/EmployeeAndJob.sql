@@ -30,3 +30,25 @@ insert into job(jname, eid) values('Job D', 2);
 insert into job(jname, eid) values('Job E', 4);
 insert into job(jname, eid) values('Job F', 4);
 insert into job(jname, eid) values('Job G', 4);
+
+-- sql 查詢 1:  交集查詢
+select j.jid, j.jname, j.eid, 
+	   e.eid as employee_eid, e.ename as employee_ename, e.salary as employee_salary, e.createtime as employee_createtime
+from job j, employee e
+where j.eid = e.eid
+
+-- sql 查詢 2: 向左合併查詢
+select e.eid, e.ename, e.salary, e.createtime,
+	   j.jid as job_jid, j.jname as job_jname, j.eid as job_eid
+from employee e left join job j
+on e.eid = j.eid;
+
+
+
+
+
+
+
+
+
+

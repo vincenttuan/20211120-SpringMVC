@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="spform"
+	uri="http://www.springframework.org/tags/form"%>
+
+<form class="pure-form">
+	<fieldset>
+		<legend>Employee List</legend>
+		<table class="pure-table pure-table-bordered" width="100%">
+			<thead>
+				<tr>
+					<th>編號</th>
+					<th>姓名</th>
+					<th>薪資</th>
+					<th>工作</th>
+					<th>建立時間</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="emp" items="${ employees }">
+					<tr>
+						<td><a href="./${ emp.eid }" title="按我一下可以修改"> ${ emp.eid }
+						</a></td>
+						<td>${ emp.ename }</td>
+						<td>${ emp.salary }</td>
+						<td>
+							<c:forEach var="job" items="${ emp.jobs }">
+								${ job.jname }
+							</c:forEach>
+						</td>
+						<td>${ emp.createtime }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</fieldset>
+</form>

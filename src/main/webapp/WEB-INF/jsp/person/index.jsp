@@ -38,8 +38,8 @@
 			<spform:errors path="member" cssClass="error" />
 			<p />
 			生日:
-			<spform:input type="date" path="birth" />
-			<spform:errors path="date" cssClass="error" />
+			<spform:input path="birth" type="date" />
+			<spform:errors path="birth" cssClass="error" />
 			<p />
 			<input type="submit" value="新增"
 				class="pure-button pure-button-primary" />
@@ -47,5 +47,7 @@
 			<spform:errors path="*" cssClass="error" />	
 		</fieldset>
 	</spform:form>
+	<hr />
+	${ people }
 </body>
 </html>

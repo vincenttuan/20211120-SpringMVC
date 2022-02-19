@@ -20,6 +20,7 @@
 	<context:component-scan base-package="springmvc.controller"/>
 	<context:component-scan base-package="springmvc.service"/>
 	<context:component-scan base-package="springmvc.validator"/>
+	<context:component-scan base-package="springmvc.lab"/>
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           id="internalResourceViewResolver">
